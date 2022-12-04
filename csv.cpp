@@ -55,3 +55,6 @@ void CsvReader::getList(QString filepath) {
 QVector<Point> CsvReader::getPoints() {
     return points;
 }
+
+
+
