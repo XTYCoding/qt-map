@@ -1,7 +1,5 @@
-﻿  Reading Qt configuration (D:/dev/QT/5.14.2/msvc2017_64/bin/qmake)
-  uic Map.ui
+﻿  moc Map.h
   Map.cpp
   main.cpp
-  qrc_Map.cpp
   moc_Map.cpp
   Map.vcxproj -> D:\project\QT\Map\x64\Release\Map.exe

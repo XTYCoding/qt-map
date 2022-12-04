@@ -10,8 +10,9 @@ private:
 	QVector<Point> points;
 	QHash<QString,int> heads;
 public:
-	QVector<Point> getList(QString);
-	QHash<QString,int> getListHeads(QString);
+	void getList(QString);
+	void getListHeads(QString);
+	QVector<Point> getPoints();
 };
 
 class CsvMaker {

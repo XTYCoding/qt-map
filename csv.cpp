@@ -1,6 +1,6 @@
 #include "csv.h"
 
-QHash<QString, int> CsvReader::getListHeads(QString head) {
+void CsvReader::getListHeads(QString head) {
 	QStringList _lst = head.split(QLatin1Char(','));
 	QHash<QString, int> heads;
     for (int i = 0; i < _lst.size(); i++) {
@@ -20,7 +20,7 @@ QHash<QString, int> CsvReader::getListHeads(QString head) {
     this->heads = heads;
 }
 
-QVector<Point> CsvReader::getList(QString filepath) {
+void CsvReader::getList(QString filepath) {
 	QFile file(filepath);
 	bool open = file.open(QIODevice::ReadOnly | QIODevice::Text);
 	if (!open) {
@@ -50,4 +50,8 @@ QVector<Point> CsvReader::getList(QString filepath) {
         point.setPoint(infos);
         points.append(point);
     }
+}
+
+QVector<Point> CsvReader::getPoints() {
+    return points;
 }

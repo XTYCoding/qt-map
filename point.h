@@ -1,4 +1,8 @@
+#ifndef POINT_H
+#define POINT_H
+
 #include <QJsonArray>
+#include <QJsonDocument>
 #include <QVector>
 
 class Point {
@@ -22,6 +26,8 @@ public:
 	void setYaw();
 	void setRoll();
 	void setPitch();
-	QJsonArray getPoint();
+	QString getPointInfo();
 	void setPoint(QVector<double>); 
 };
+
+#endif

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
+    <title>测试</title>
+    <style>
+        html,
+        body,
+        #container {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <!-- ���ص�ͼJSAPI�ű� -->
+    <script src="https://webapi.amap.com/maps?v=2.0&key=036a985388988a261e5c7653db49e391"></script>
+    <script type="text/javascript" src="./qwebchannel.js"></script>
+    <script src = "./convert.js"></script>
+    <script src = "./show.js"></script>
+    <script src = "./webobj.js"></script>
+    <script>
+        var points=[];
+    </script>
+    <script>
+        var map = new AMap.Map('container', {
+            viewMode: '2D', // Ĭ��ʹ�� 2D ģʽ�����ϣ��ʹ�ô��и����ǵ� 3D ģʽ�������� viewMode: '3D',
+            zoom: 11, //��ʼ����ͼ�㼶
+            layers: [new AMap.TileLayer.Satellite()],
+            center: [116.397428, 39.90923] //��ʼ����ͼ���ĵ�
+        });
+    </script>
+    <script>
+    var style = [{
+        url: 'https://a.amap.com/jsapi_demos/static/images/mass0.png',
+        anchor: new AMap.Pixel(6, 6),
+        size: new AMap.Size(11, 11)
+    }, {
+        url: 'https://a.amap.com/jsapi_demos/static/images/mass1.png',
+        anchor: new AMap.Pixel(4, 4),
+        size: new AMap.Size(7, 7)
+    }, {
+        url: 'https://a.amap.com/jsapi_demos/static/images/mass2.png',
+        anchor: new AMap.Pixel(3, 3),
+        size: new AMap.Size(5, 5)
+    }
+    ];
+
+        var mass = new AMap.MassMarks(points, {
+            opacity: 0.8,
+            zIndex: 111,
+            cursor: 'pointer',
+            style: style
+        });
+    </script>
+</body>
+</html>

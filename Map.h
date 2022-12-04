@@ -3,6 +3,9 @@
 #include <QtWidgets/QWidget>
 #include <QWebChannel>
 #include <QWebEngineView>
+#include<QFileDialog>
+#include<QDebug>
+#include "webclass.h"
 #include "ui_Map.h"
 
 class Map : public QWidget
@@ -13,8 +16,13 @@ public:
     Map(QWidget* parent = nullptr);
     ~Map();
 
+private slots:
+    void on_send_clicked();
+    void on_show_clicked();
+
 private:
     Ui::MapClass ui;
-    QWebChannel* webchannel = nullptr;
     QWebEngineView* qwebview = nullptr;
+    WebClass* webobj = nullptr;
+    QWebChannel* webchannel = nullptr;
 };

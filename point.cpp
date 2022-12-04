@@ -19,14 +19,20 @@ double Point::getPitch() {
 	return pitch ;
 }
 
-QJsonArray Point::getPoint() {
+QString Point::getPointInfo() {
 	QJsonArray info_json;
+	QJsonDocument info_document;
+	QByteArray info_byteArray;
 	info_json.append(id);
 	info_json.append(longitude);
 	info_json.append(latitude);
 	info_json.append(yaw);
 	info_json.append(roll);
 	info_json.append(pitch);
+	info_document.setArray(info_json);
+	info_byteArray = info_document.toJson(QJsonDocument::Compact);
+	QString infoJson(info_byteArray);
+	return infoJson;
 }
 
 void Point::setPoint(QVector<double> infos) {

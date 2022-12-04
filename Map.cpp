@@ -4,11 +4,31 @@ Map::Map(QWidget* parent)
     : QWidget(parent)
 {
     ui.setupUi(this);
-    webchannel = new QWebChannel(parent);
-    QString htmlPath = "HTMLPage.html";
-    ui.widget->page()->load(QUrl("D:/project/QT/Map/HTMLPage.html"));
+    webchannel = new QWebChannel();
+    webobj = new WebClass();
+    webchannel->registerObject("webobj", webobj);
     ui.widget->page()->setWebChannel(webchannel);
+    ui.widget->page()->load(QUrl("D:/project/QT/Map/html/HTMLPage.html"));
 }
 
 Map::~Map()
 {}
+
+void Map::on_send_clicked() {
+    QString filepath = QFileDialog::getOpenFileName(
+        this,
+        tr("open a file."),
+        "D:/",
+        tr("GPS(*.csv)"));
+    if (filepath.isEmpty()) {
+        return;
+    }
+    else {
+        //发送信号给JS接收数据
+        webobj->sendWgs(filepath);
+    }
+}
+
+void Map::on_show_clicked() {
+    webobj->show();
+}
