@@ -16,24 +16,33 @@
     </style>
 </head>
 <body>
-    <div id="container"></div>
     <script src="https://webapi.amap.com/maps?v=2.0&key=036a985388988a261e5c7653db49e391"></script>
+    <script src="https://webapi.amap.com/maps?v=2.0&key=036a985388988a261e5c7653db49e391&plugin=AMap.MouseTool"></script>
     <script src="./style.js"></script>
     <script type="text/javascript" src="./qwebchannel.js"></script>
     <script type="text/javascript" src="./jquery-3.6.1.min"></script>
     <script src = "./convert.js"></script>
     <script src = "./show.js"></script>
     <script src = "./webobj.js"></script>
+    <script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
+    <div id="container"></div>
+    <div class="info" id="text">
+        点击获取点信息
+    </div>
     <script>
         var points=[];
-    </script>
-    <script>
         var map = new AMap.Map('container', {
             viewMode: '2D', 
             zoom: 15, 
             layers: [new AMap.TileLayer.Satellite()],
             center: [118.869763, 32.016266] 
         });
+        var mouseTool = new AMap.MouseTool(map); 
+        mouseTool.marker({
+            icon:startIcon,
+        });
+        mouseTool.on('draw', function(event) {
+         })
     </script>
     <script>
         var mass = new AMap.MassMarks(points, {
@@ -41,6 +50,10 @@
             zIndex: 111,
             cursor: 'pointer',
             style: point_style
+        });
+        mass.on('click', function (e) {
+            var text = 'id:'+e.data.id+' 经纬度:'+e.data.lnglat+' yaw:'+e.data.yaw+' roll:'+e.data.roll+' pitch:'+e.data.pitch
+            document.querySelector("#text").innerText = text;
         });
     </script>
 </body>

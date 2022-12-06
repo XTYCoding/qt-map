@@ -12,3 +12,10 @@ var point_style = [{
         size: new AMap.Size(5, 5)
     }
 ];
+
+var startIcon = new AMap.Icon({
+    // 图标的取图地址
+    image: 'https://a.amap.com/jsapi_demos/static/images/mass0.png',
+    // 图标所用图片大小
+    imageSize: new AMap.Size(8, 8),
+});

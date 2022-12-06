@@ -55,5 +55,6 @@ var showPoints=function(fr){
     }
     mass.setData(points);
     mass.setMap(map);
+    log.info('加载完成')
 }
 
