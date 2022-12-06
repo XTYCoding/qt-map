@@ -30,12 +30,12 @@ public slots:
     }
 
     void show() {
-        emit jsShow();
+        emit jsShow(10);
     }  
 
 signals:
     void sendToJs_WGS(QString);
-    void jsShow();
+    void jsShow(int fr);
 
 };
 
