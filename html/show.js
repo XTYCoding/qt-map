@@ -38,14 +38,22 @@ var recDataWgs=function(numlist)
     var rol = parseFloat(roll);
     var pit = parseFloat(pitch);
     lonlat = new WGS84_to_GCJ02().transform(lon,lat); 
-    var point = {lnglat:[],id:i,yaw:ya,roll:rol,pitch:pit,style:3};
+    var point = {lnglat:[],id:i,yaw:ya,roll:rol,pitch:pit,style:0};
     point.lnglat=lonlat;
     points.push(point);
 }
    //展示轨迹
-var showData=function(){
+var showPoints=function(fr){
+    sub_points=[];
     if(points.length==0)
        alert("empty");
+    if(fr!=0){
+        for(var i = 0,len = points.length;i<len;i+=fr){
+            sub_points.push(points[i]);
+        }
+        points=sub_points;
+    }
     mass.setData(points);
     mass.setMap(map);
 }
+
