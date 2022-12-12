@@ -20,9 +20,10 @@
     <script src="https://webapi.amap.com/maps?v=2.0&key=036a985388988a261e5c7653db49e391&plugin=AMap.MouseTool"></script>
     <script src="./style.js"></script>
     <script type="text/javascript" src="./qwebchannel.js"></script>
-    <script type="text/javascript" src="./jquery-3.6.1.min"></script>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <script src = "./convert.js"></script>
     <script src = "./show.js"></script>
+    <script src = "./make.js"></script>
     <script src = "./webobj.js"></script>
     <script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
     <div id="container"></div>
@@ -31,6 +32,8 @@
     </div>
     <script>
         var points=[];
+        var nodeList=[];
+        var list=[];
         var map = new AMap.Map('container', {
             viewMode: '2D', 
             zoom: 15, 
@@ -42,7 +45,10 @@
             icon:startIcon,
         });
         mouseTool.on('draw', function(event) {
-         })
+      // event.obj 为绘制出来的覆盖物对象
+            addNode(event.obj,nodeList);
+            makelist(nodeList);
+        });
     </script>
     <script>
         var mass = new AMap.MassMarks(points, {
