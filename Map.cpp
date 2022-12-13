@@ -25,10 +25,20 @@ void Map::on_send_clicked() {
     }
     else {
         //发送信号给JS接收数据
-        webobj->sendWgs(filepath);
+        webobj->sendwgs(filepath);
     }
 }
 
 void Map::on_show_clicked() {
     webobj->show();
+}
+
+void Map::on_generate_clicked() {
+    webobj->generatefile();//这一条要先执行，等待JS将点传输到QT
+    QString filename = QFileDialog::getSaveFileName(
+        this,
+        tr("Excel file"),
+        "D:/",
+        tr("Files (*.csv"));
+    webobj->savefile(filename);//接着再生成文件
 }

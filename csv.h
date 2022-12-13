@@ -16,6 +16,12 @@ public:
 };
 
 class CsvMaker {
+private:
+	QVector<QString> nodeList;//´æ´¢JS´«µÝµÄµã
+	QVector<QVector<double>> list;//´æ´¢¹ì¼£¾­Î³¶È
 public:
+	void addNode(QString lnglat);
+	void makeList();
+	void generateFile(QString filename);
 
 };

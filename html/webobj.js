@@ -5,4 +5,5 @@ new QWebChannel(qt.webChannelTransport,
   //绑定QT信号和JS函数
   webobj.sendToJs_WGS.connect(recDataWgs);
   webobj.jsShow.connect(showPoints);
+  webobj.generateFile.connect(generateList);
 });

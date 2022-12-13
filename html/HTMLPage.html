@@ -40,14 +40,13 @@
             layers: [new AMap.TileLayer.Satellite()],
             center: [118.869763, 32.016266] 
         });
-        var mouseTool = new AMap.MouseTool(map); 
-        mouseTool.marker({
+        var mouseTool = new AMap.MouseTool(map); //创建绘制工具
+        mouseTool.marker({//开启绘制点功能
             icon:startIcon,
         });
-        mouseTool.on('draw', function(event) {
+        mouseTool.on('draw', function(event) {//绑定信号 绘制后将点传给addNode 
       // event.obj 为绘制出来的覆盖物对象
             addNode(event.obj,nodeList);
-            makelist(nodeList);
         });
     </script>
     <script>
