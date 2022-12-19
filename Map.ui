@@ -49,7 +49,7 @@
     <string>PushButton</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="generate">
+  <widget class="QPushButton" name="drawpoint">
    <property name="geometry">
     <rect>
      <x>610</x>
@@ -59,7 +59,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>PushButton</string>
+    <string>绘制轨迹</string>
    </property>
   </widget>
  </widget>

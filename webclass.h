@@ -46,11 +46,12 @@ public slots:
         csvmaker->makeList();
         csvmaker->generateFile(filename);
     }
-
+ 
 signals:
     void sendToJs_WGS(QString);
     void jsShow(int fr);
     void generateFile();
+    void startDraw(QString);
 
 };
 

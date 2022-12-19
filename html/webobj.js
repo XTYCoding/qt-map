@@ -6,4 +6,5 @@ new QWebChannel(qt.webChannelTransport,
   webobj.sendToJs_WGS.connect(recDataWgs);
   webobj.jsShow.connect(showPoints);
   webobj.generateFile.connect(generateList);
+  webobj.startDraw.connect(draw);
 });
