@@ -18,10 +18,12 @@ public:
 class CsvMaker {
 private:
 	QVector<QString> nodeList;//´æ´¢JS´«µÝµÄµã
-	QVector<QVector<double>> list;//´æ´¢¹ì¼£¾­Î³¶È
+	QVector<QString> circleList;
+	QVector<QVector<double>> trackList;//´æ´¢¹ì¼£¾­Î³¶È
+	QVector<QVector<double>> pointPairsList;
 public:
-	void addNode(QString lnglat);
-	void makeList();
-	void generateFile(QString filename);
+	void addNode(QString lnglat,int type);
+	void makeList(int type);
+	void generateFile(QString filename,int type);
 
 };

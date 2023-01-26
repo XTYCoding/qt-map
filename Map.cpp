@@ -48,6 +48,30 @@ void Map::on_drawpoint_clicked() {
             tr("Excel file"),
             "D:/",
             tr("Files (*.csv"));
-        webobj->savefile(filename);//接着再生成文件
+        webobj->savefile(filename,0);//接着再生成文件
     }
+}
+
+void Map::on_select_clicked() {
+    if (ui.select->text() == QString::fromLocal8Bit("画圈"))
+    {
+        ui.select->setText(QString::fromLocal8Bit("生成文件"));
+        webobj->startDraw("circle");
+    }
+    else
+    {
+        ui.select->setText(QString::fromLocal8Bit("画圈"));
+        webobj->selectCircle();//这一条要先执行，等待JS将点传输到QT }
+        QString filename = QFileDialog::getSaveFileName(
+            this,
+            tr("Excel file"),
+            "D:/",
+            tr("Files (*.csv"));
+        webobj->savefile(filename, 1);//接着再生成文件
+    }
+}
+
+void Map::on_testing_clicked() {
+    qDebug() << "！！！！！！";
+    webobj->getnum();
 }

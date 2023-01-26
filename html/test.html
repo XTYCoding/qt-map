@@ -5,12 +5,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
-    <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
-    <script src="https://webapi.amap.com/maps?v=2.0&key=036a985388988a261e5c7653db49e391&plugin=AMap.CircleEditor"></script>
-    <script src="https://webapi.amap.com/maps?v=2.0&key=036a985388988a261e5c7653db49e391&plugin=AMap.MouseTool"></script>
-    <script src="./style.js"></script>
+    <script src="https://webapi.amap.com/loader.js"></script>
     <script type="text/javascript" src="./qwebchannel.js"></script>
+    <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="./style.js"></script>
     <script src = "./convert.js"></script>
     <script src = "./show.js"></script>
     <script src = "./draw.js"></script>
@@ -38,21 +37,45 @@
         <button class="btn" onclick="circleEditor.close()">结束编辑</button> 
     </div>
     <script>
+
+    AMapLoader.load({ //首次调用 load
+        key:'036a985388988a261e5c7653db49e391',//首次load key为必填
+        version:'2.0',
+        plugins:['AMap.CircleEditor','AMap.MouseTool']
+    }).then((AMap)=>{
         var points=[];
         var nodeList=[];
         var list=[];
         var overlays=[];
-        var circles=[];
         var map = new AMap.Map('container', {
             viewMode: '2D', 
             zoom: 15, 
             layers: [new AMap.TileLayer.Satellite()],
             center: [118.869763, 32.016266] 
         });
-        var mouseTool;
-    </script>
-    <script>
-        var mass = new AMap.MassMarks(points, {
+        var mouseTool; //创建绘制工具
+        var circleEditor;
+        var circle = new AMap.Circle({
+        center: [116.433322, 39.900255],
+        radius: 1000, //半径
+        borderWeight: 3,
+        strokeColor: "#FF33FF", 
+        strokeOpacity: 1,
+        strokeWeight: 6,
+        strokeOpacity: 0.2,
+        fillOpacity: 0.4,
+        strokeStyle: 'dashed',
+        strokeDasharray: [10, 10], 
+        // 线样式还支持 'dashed'
+        fillColor: '#1791fc',
+        zIndex: 50,
+    })
+
+    map.add(circle);
+    // 缩放地图到合适的视野级别
+    map.setFitView([ circle ])
+
+    var mass = new AMap.MassMarks(points, {
             opacity: 0.8,
             zIndex: 111,
             cursor: 'pointer',
@@ -62,20 +85,15 @@
             var text = 'id:'+e.data.id+' 经纬度:'+e.data.lnglat+' yaw:'+e.data.yaw+' roll:'+e.data.roll+' pitch:'+e.data.pitch
             document.querySelector("#text").innerText = text;
         });
-    </script>
-    <script>
-        document.getElementById('clear').onclick = function(){
-            if(circles.length>0){
-                map.remove(circles[circles.length-1]);
-                circles.pop();
-            }
-            if(overlays.length>0){
-                map.remove(overlays[overlays.length-1]);
-                overlays.pop();
-                nodeList.pop();
-            }
 
+        document.getElementById('clear').onclick = function(){
+            map.remove(overlays[overlays.length-1])
+            overlays.pop();
+            nodeList.pop();
         }        
+    }).catch((e)=>{
+        console.error(e);
+    });
     </script>
 </body>
 </html>

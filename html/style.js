@@ -19,3 +19,4 @@ var startIcon = new AMap.Icon({
     // 图标所用图片大小
     imageSize: new AMap.Size(8, 8),
 });
+

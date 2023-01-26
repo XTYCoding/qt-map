@@ -20,6 +20,8 @@ private slots:
     void on_send_clicked();
     void on_show_clicked();
     void on_drawpoint_clicked();
+    void on_select_clicked();
+    void on_testing_clicked();
 
 private:
     Ui::MapClass ui;

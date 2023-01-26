@@ -33,26 +33,35 @@ public slots:
         emit jsShow(10);
     }  
 
-    void rcvdata(QString data)
+    void rcvdata(QString data,int type)
     {
-        csvmaker->addNode(data);//csvmaker实例化并封装再webclass中
+        if (type = 0) {
+            qDebug() << data;
+            csvmaker->addNode(data,type);//csvmaker实例化并封装再webclass中
+        }
+        else if (type = 1) {
+            qDebug() << data;
+            csvmaker->addNode(data,type);//csvmaker实例化并封装再webclass中
+        }
     }
 
     void generatefile() {
         emit generateFile();
     }
 
-    void savefile(QString filename) {
-        csvmaker->makeList();
-        csvmaker->generateFile(filename);
+    void savefile(QString filename,int type) {
+        csvmaker->makeList(type);
+        csvmaker->generateFile(filename,type);
     }
+
  
 signals:
     void sendToJs_WGS(QString);
     void jsShow(int fr);
     void generateFile();
     void startDraw(QString);
-
+    void selectCircle();
+    void getnum();
 };
 
 

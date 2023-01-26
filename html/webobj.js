@@ -7,4 +7,6 @@ new QWebChannel(qt.webChannelTransport,
   webobj.jsShow.connect(showPoints);
   webobj.generateFile.connect(generateList);
   webobj.startDraw.connect(draw);
+  webobj.selectCircle.connect(select);
+  webobj.getnum.connect(num);
 });

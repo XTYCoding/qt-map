@@ -18,7 +18,7 @@
 //   }
 
 
-function addNode(marker,nodeList){//将点添加到nodeList(以字符串方式储存信息)
+function addNode(marker){//将点添加到nodeList(以字符串方式储存信息)
     var lnglat = marker.getPosition().getLng()+','+marker.getPosition().getLat();
     nodeList.push(lnglat); 
 }
@@ -36,11 +36,11 @@ function makeList(nodeList){
 var generateList=function(){
     makeList(nodeList);
     for(let i = 0;i<nodeList.length;i++){
-        foo.rcvdata(nodeList[i]);
+        foo.rcvdata(nodeList[i],0);
     }
     nodeList=[];
+    overlays=[];
     mouseTool.close(true);
-    map.off('click', addNode);
 }
 
 // var mark=function(){
