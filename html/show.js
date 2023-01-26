@@ -20,8 +20,9 @@ var recDatagcj=function(numlist)
     points.push(point);
 }
 
+
     //创建wgs系的海量点数组
-var recDataWgs=function(numlist)
+var recDataWgs=function(numlist,fr)
 {
     var num_list=numlist.substring(1,numlist.length-1);
     var id = num_list.split(",")[0];
@@ -42,8 +43,8 @@ var recDataWgs=function(numlist)
     point.lnglat=lonlat;
     points.push(point);
 }
-   //展示轨迹
-var showPoints=function(fr){
+
+var setPoints=function(fr){
     sub_points=[];
     if(points.length==0)
        alert("empty");
@@ -55,6 +56,15 @@ var showPoints=function(fr){
     }
     mass.setData(points);
     mass.setMap(map);
-    log.info('加载完成')
 }
+
+   //展示轨迹
+var showPoints=function(){
+    mass.show();
+}
+
+var hidePoints=function(){
+    mass.hide();
+}
+
 

@@ -30,7 +30,17 @@ void Map::on_send_clicked() {
 }
 
 void Map::on_show_clicked() {
-    webobj->show();
+    if (ui.show->text() == QString::fromLocal8Bit("œ‘ æ"))
+    {
+        webobj->show();
+        ui.show->setText(QString::fromLocal8Bit("“˛≤ÿ"));
+    }
+    else
+    {
+        webobj->hide();
+        ui.show->setText(QString::fromLocal8Bit("œ‘ æ"));
+    }
+
 }
 
 void Map::on_drawpoint_clicked() {

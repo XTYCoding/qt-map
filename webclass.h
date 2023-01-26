@@ -22,6 +22,7 @@ public slots:
             QString info = point.getPointInfo();
             emit sendToJs_WGS(info);
         }
+        emit set(10);
     }
 
     void jscallme()
@@ -30,8 +31,12 @@ public slots:
     }
 
     void show() {
-        emit jsShow(10);
-    }  
+        emit jsShow();
+    } 
+
+    void hide() {
+        emit jsHide();
+    }
 
     void rcvdata(QString data,int type)
     {
@@ -57,7 +62,9 @@ public slots:
  
 signals:
     void sendToJs_WGS(QString);
-    void jsShow(int fr);
+    void set(int);
+    void jsShow();
+    void jsHide();
     void generateFile();
     void startDraw(QString);
     void selectCircle();

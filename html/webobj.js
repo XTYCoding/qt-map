@@ -4,7 +4,9 @@ new QWebChannel(qt.webChannelTransport,
   window.foo = webobj;
   //绑定QT信号和JS函数
   webobj.sendToJs_WGS.connect(recDataWgs);
+  webobj.set.connect(setPoints);
   webobj.jsShow.connect(showPoints);
+  webobj.jsHide.connect(hidePoints);
   webobj.generateFile.connect(generateList);
   webobj.startDraw.connect(draw);
   webobj.selectCircle.connect(select);
